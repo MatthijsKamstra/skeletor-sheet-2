@@ -530,7 +530,7 @@ Bool.__ename__ = ["Bool"];
 var Class = { __name__ : ["Class"]};
 var Enum = { };
 js_Boot.__toStr = ({ }).toString;
-model_constants_App.BUILD = "2018-02-16 23:32:17";
+model_constants_App.BUILD = "2018-02-16 23:54:15";
 model_constants_App.PROJECT_NAME = "[SkeletorSheet2]";
 template_El._html = "";
 Main.main();

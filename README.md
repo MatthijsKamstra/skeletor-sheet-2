@@ -16,6 +16,7 @@ this is a bootstrap project for a quick website with a Google Spreadsheet "datab
 - [Fontawesome v5](https://fontawesome.com) for nice icons
 - [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/)
 - [Vue.js](https://vuejs.org/) a progressive framework for building user interfaces.
+- [Vue router](https://github.com/vuejs/vue-router) The official router for Vue.js
 - [sass](http://sass-lang.com/) CSS with superpowers
 - [LiveReload chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
 - [Neko webserver](README_NEKO.MD) is a Haxe related web server, but any server should work

@@ -30,7 +30,11 @@
 		"-watch:scss": "npm run build:scss && npm run build:scss -- -w",
 		"-watch:scss2": "npm run build:scss && npm run build:scss -- -w & livereload bin/",
 
-		"build"								: "npm run build:release",
+		"build"								: "npm run build:haxe:all && npm run build:docs:remove && npm run build:docs:create && npm run build:bin:docs:copy",
+		"build:docs:remove" 				: "rm -rf docs",
+		"build:docs:create" 				: "mkdir docs",
+		"build:bin:docs:copy" 				: "cp -r bin/* docs",
+
 		"build:release"						: "haxe build_all.hxml",
 
 		"build:haxe"						: "haxe build.hxml",
