@@ -6,6 +6,8 @@ I needed a quick prototype with a Google Spreadsheet as database
 
 It seems a good idea to make a skeleton project for this.
 
+SPA using vue and vue-router.
+
 
 ## Desciption project
 

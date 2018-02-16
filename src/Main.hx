@@ -46,7 +46,7 @@ class Main {
 			if( storage != null ) trace('hasStorage : ${hasStorage}');
 
 			initHomepage();
-			// initTabletop();
+			initTabletop();
 		});
 	}
 

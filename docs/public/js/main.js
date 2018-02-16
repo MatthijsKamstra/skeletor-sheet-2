@@ -18,6 +18,7 @@ var Main = function() {
 			console.log("hasStorage : " + (_gthis.hasStorage == null ? "null" : "" + _gthis.hasStorage));
 		}
 		_gthis.initHomepage();
+		_gthis.initTabletop();
 	});
 };
 Main.__name__ = true;
@@ -32,6 +33,36 @@ Main.prototype = {
 		var router = new VueRouter({ routes : routes1});
 		this.vm = new Vue({ router : router, template : Template.getOldRoot(), data : { showloading : !this.hasStorage, sheet : this.contentObj, message : "Content from this page from google spreadsheet and vue.js"}}).$mount("#app");
 	}
+	,initTabletop: function() {
+		Tabletop.init({ key : "https://docs.google.com/spreadsheets/d/1u2tIr6LCIi3hQ6wIBmz1yER_wFcRZ2atIIx2bTcRWms/edit?usp=sharing", callback : $bind(this,this.showInfo), simpleSheet : false});
+	}
+	,showInfo: function(data,tabletop) {
+		window.console.log(data);
+		this.showSnackbar("Successfully updated!");
+		console.log(tabletop.sheets("posts"));
+		console.log(tabletop.sheets("pages"));
+		console.log(tabletop);
+		console.log(tabletop.modelNames);
+		console.log(tabletop.foundSheetNames);
+		var obj = { posts : tabletop.sheets("posts").elements, pages : tabletop.sheets("pages").elements};
+		this.vm.showloading = false;
+		this.vm.sheet = obj;
+		this.set_storage(JSON.stringify(obj));
+	}
+	,showSnackbar: function(msg) {
+		var x = window.document.getElementById("snackbar");
+		if(x == null) {
+			var div = window.document.createElement("div");
+			div.id = "snackbar";
+			window.document.body.appendChild(div);
+			x = div;
+		}
+		x.innerText = msg;
+		x.className = "show";
+		setTimeout(function() {
+			x.className = x.className.replace("show","");
+		},3000);
+	}
 	,get_storage: function() {
 		if(window.localStorage.getItem(this.storageName) != null) {
 			this._storage = window.localStorage.getItem(this.storageName);
@@ -39,6 +70,13 @@ Main.prototype = {
 			this.hasStorage = true;
 		}
 		return this._storage;
+	}
+	,set_storage: function(value) {
+		var obj = { date : new Date(), data : JSON.parse(value)};
+		window.localStorage.setItem(this.storageName,JSON.stringify(obj));
+		this.contentObj = JSON.parse(JSON.stringify(value));
+		this.hasStorage = true;
+		return this._storage = value;
 	}
 	,__class__: Main
 };
@@ -518,9 +556,13 @@ template_TVue.__super__ = template_Html;
 template_TVue.prototype = $extend(template_Html.prototype,{
 	__class__: template_TVue
 });
+var $_, $fid = 0;
+function $bind(o,m) { if( m == null ) return null; if( m.__id__ == null ) m.__id__ = $fid++; var f; if( o.hx__closures__ == null ) o.hx__closures__ = {}; else f = o.hx__closures__[m.__id__]; if( f == null ) { f = function(){ return f.method.apply(f.scope, arguments); }; f.scope = o; f.method = m; o.hx__closures__[m.__id__] = f; } return f; }
 String.prototype.__class__ = String;
 String.__name__ = true;
 Array.__name__ = true;
+Date.prototype.__class__ = Date;
+Date.__name__ = ["Date"];
 var Int = { __name__ : ["Int"]};
 var Dynamic = { __name__ : ["Dynamic"]};
 var Float = Number;
@@ -530,7 +572,7 @@ Bool.__ename__ = ["Bool"];
 var Class = { __name__ : ["Class"]};
 var Enum = { };
 js_Boot.__toStr = ({ }).toString;
-model_constants_App.BUILD = "2018-02-16 23:54:15";
+model_constants_App.BUILD = "2018-02-17 00:04:08";
 model_constants_App.PROJECT_NAME = "[SkeletorSheet2]";
 template_El._html = "";
 Main.main();
