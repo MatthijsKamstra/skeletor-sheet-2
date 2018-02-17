@@ -64,7 +64,7 @@ class Template {
 		<div id="app">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container">
-					<a class="navbar-brand" href="/"><i class="far fa-comment"></i> Skeletor Sheet 2</a>
+					<router-link class="navbar-brand" to="/"><i class="far fa-comment"></i> Skeletor Sheet 2</router-link>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -72,7 +72,7 @@ class Template {
 						<ul class="navbar-nav">
 
 							<li class="nav-item active">
-								<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+								<router-link class="nav-link" to="/">Home <span class="sr-only">(current)</span></router-link>
 							</li>
 
 							<li v-for="(item, index) in sheet.pages"><router-link v-bind:to="\'/pages/\'+item.title" class="nav-link">{{ item.title }}</router-link></li>
@@ -90,8 +90,7 @@ class Template {
 
 				<transition name="custom-classes-transition" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
 					<div id="loadervue" v-if="showloading">
-						<i class="fas fa-sync-alt fa-spin fa-3x">
-						</i>
+						<i class="fas fa-sync-alt fa-spin fa-3x"></i>
 						<span class="sr-only">Loading...</span>
 					</div>
 				</transition>
@@ -128,6 +127,32 @@ class Template {
 		';
 		return template;
 	}
+
+	static public function getHome():String{
+		var template = vue([
+			div({id:'home'},[
+				h1({text:'Home'}),
+				div({_class:'row'},[
+					div({
+						_class:"col-sm-12 col-md-6 col-lg-4",
+						'v-for':'item in $$root.sheet.posts'
+					},[
+						div({_class:'card'},[
+							img({'v-bind:src':'item.img', _class:"npm"}),
+							div({_class:"card-body"},[
+								h5({_class:"card-title", text: '{{ item.title }}'}),
+								p({_class:"card-text", text:'{{ item.body }}'}),
+								routerLink({_class:"btn btn-dark", 'v-bind:to':'\'/post/\'+item.title', text:'Read more'}),
+								// a({'v-bind:href':"\'/#/post/\'+item.title", _class:"btn btn-primary", text:"read more"})
+							])
+						])
+					])
+				])
+			])
+		]);
+		return template.toString();
+	}
+
 
 	static public function home():String{
 		var template = '

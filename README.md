@@ -19,6 +19,7 @@ this is a bootstrap project for a quick website with a Google Spreadsheet "datab
 - [Google Spreadsheets](https://docs.google.com/spreadsheets/u/0/)
 - [Vue.js](https://vuejs.org/) a progressive framework for building user interfaces.
 - [Vue router](https://github.com/vuejs/vue-router) The official router for Vue.js
+- [hx-html](https://github.com/MatthijsKamstra/hx-html) experimental html template creation
 - [sass](http://sass-lang.com/) CSS with superpowers
 - [LiveReload chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
 - [Neko webserver](README_NEKO.MD) is a Haxe related web server, but any server should work
@@ -60,9 +61,25 @@ haxelib git hxexterns https://github.com/MatthijsKamstra/hxexterns.git
 
 # cutting edge vue.js externs
 haxelib git vue https://github.com/MatthijsKamstra/Vue.hx.git
+
+# generate html templates with Haxe
+haxelib git hx-html https://github.com/MatthijsKamstra/hx-html
 ```
 
 ### NPM / auto build
+
+start Neko/Haxe server, start livereload, build Haxe and check for changes
+
+```bash
+npm run start
+```
+
+build and create `docs` folder for github
+
+```bash
+npm run build
+```
+
 
 open local server (neko)
 

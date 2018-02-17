@@ -52,7 +52,7 @@ class Main {
 
 	function initHomepage (){
 
-		var _home 		= { template: Template.home() };
+		var _home 		= { template: Template.getHome() };
 
 		var routes  : Array<RouteConfig> = [
 			{ path: '', component: _home },

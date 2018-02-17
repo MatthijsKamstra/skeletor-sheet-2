@@ -27,7 +27,7 @@ Main.main = function() {
 };
 Main.prototype = {
 	initHomepage: function() {
-		var _home = { template : Template.home()};
+		var _home = { template : Template.getHome()};
 		var routes = { path : "/pages/:id", component : new component_VPage().init(), props : true};
 		var routes1 = [{ path : "", component : _home},routes,{ path : "/post/:id", component : new component_VPost().init(), props : true}];
 		var router = new VueRouter({ routes : routes1});
@@ -110,12 +110,21 @@ Std.string = function(s) {
 var Template = function() { };
 Template.__name__ = true;
 Template.getOldRoot = function() {
-	var template = "\n\t\t<div id=\"app\">\n\t\t\t<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n\t\t\t\t<div class=\"container\">\n\t\t\t\t\t<a class=\"navbar-brand\" href=\"/\"><i class=\"far fa-comment\"></i> Skeletor Sheet 2</a>\n\t\t\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n\t\t\t\t\t\t<span class=\"navbar-toggler-icon\"></span>\n\t\t\t\t\t</button>\n\t\t\t\t\t<div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n\t\t\t\t\t\t<ul class=\"navbar-nav\">\n\n\t\t\t\t\t\t\t<li class=\"nav-item active\">\n\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/\">Home <span class=\"sr-only\">(current)</span></a>\n\t\t\t\t\t\t\t</li>\n\n\t\t\t\t\t\t\t<li v-for=\"(item, index) in sheet.pages\"><router-link v-bind:to=\"'/pages/'+item.title\" class=\"nav-link\">{{ item.title }}</router-link></li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</nav>\n\n\t\t\t<div class=\"container\">\n\t\t\t\t<!--\n\t\t\t\t\t<p>{{ message }}</p>\n\t\t\t\t-->\n\n\t\t\t\t<router-view></router-view>\n\n\t\t\t\t<transition name=\"custom-classes-transition\" enter-active-class=\"animated fadeIn\" leave-active-class=\"animated fadeOut\">\n\t\t\t\t\t<div id=\"loadervue\" v-if=\"showloading\">\n\t\t\t\t\t\t<i class=\"fas fa-sync-alt fa-spin fa-3x\">\n\t\t\t\t\t\t</i>\n\t\t\t\t\t\t<span class=\"sr-only\">Loading...</span>\n\t\t\t\t\t</div>\n\t\t\t\t</transition>\n\n\t\t\t</div>\n\t\t</div><!-- /#app -->\n\t\t";
+	var template = "\n\t\t<div id=\"app\">\n\t\t\t<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n\t\t\t\t<div class=\"container\">\n\t\t\t\t\t<router-link class=\"navbar-brand\" to=\"/\"><i class=\"far fa-comment\"></i> Skeletor Sheet 2</router-link>\n\t\t\t\t\t<button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n\t\t\t\t\t\t<span class=\"navbar-toggler-icon\"></span>\n\t\t\t\t\t</button>\n\t\t\t\t\t<div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n\t\t\t\t\t\t<ul class=\"navbar-nav\">\n\n\t\t\t\t\t\t\t<li class=\"nav-item active\">\n\t\t\t\t\t\t\t\t<router-link class=\"nav-link\" to=\"/\">Home <span class=\"sr-only\">(current)</span></router-link>\n\t\t\t\t\t\t\t</li>\n\n\t\t\t\t\t\t\t<li v-for=\"(item, index) in sheet.pages\"><router-link v-bind:to=\"'/pages/'+item.title\" class=\"nav-link\">{{ item.title }}</router-link></li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</nav>\n\n\t\t\t<div class=\"container\">\n\t\t\t\t<!--\n\t\t\t\t\t<p>{{ message }}</p>\n\t\t\t\t-->\n\n\t\t\t\t<router-view></router-view>\n\n\t\t\t\t<transition name=\"custom-classes-transition\" enter-active-class=\"animated fadeIn\" leave-active-class=\"animated fadeOut\">\n\t\t\t\t\t<div id=\"loadervue\" v-if=\"showloading\">\n\t\t\t\t\t\t<i class=\"fas fa-sync-alt fa-spin fa-3x\"></i>\n\t\t\t\t\t\t<span class=\"sr-only\">Loading...</span>\n\t\t\t\t\t</div>\n\t\t\t\t</transition>\n\n\t\t\t</div>\n\t\t</div><!-- /#app -->\n\t\t";
 	return template;
 };
-Template.home = function() {
-	var template = "\n\t\t\t<div class=\"home\">\n\t\t\t\t<h1>Home</h1>\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-sm-12 col-md-6 col-lg-4\" v-for=\"item in $" + "root.sheet.posts\">\n\t\t\t\t\t\t<div class=\"card\">\n\t\t\t\t\t\t\t<img v-bind:src=\"item.img\" class=\"npm \">\n\t\t\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t\t\t\t<h5 class=\"card-title\">{{ item.title }}</h5>\n\t\t\t\t\t\t\t\t<p class=\"card-text\">{{ item.body }}</p>\n\t\t\t\t\t\t\t\t<a v-bind:href=\"'/#/post/'+item.title\" class=\"btn btn-primary\">read more</a>\n\t\t\t\t\t\t\t</div><!-- /.card-body -->\n\t\t\t\t\t\t</div><!-- /.card -->\n\t\t\t\t\t</div><!-- /.col-sm-12 col-md-6 col-lg-4 -->\n\t\t\t\t</div><!-- /.row -->\n\t\t\t</div>\n\t\t";
-	return template;
+Template.getHome = function() {
+	var template1 = template_Html.h1({ text : "Home"});
+	var template2 = template_Html.img({ "v-bind:src" : "item.img", _class : "npm"});
+	var template3 = template_Html.h5({ _class : "card-title", text : "{{ item.title }}"});
+	var template4 = template_Html.p({ _class : "card-text", text : "{{ item.body }}"});
+	var template5 = template_TVue.routerLink({ _class : "btn btn-dark", "v-bind:to" : "'/post/'+item.title", text : "Read more"});
+	var template6 = template_Html.div({ _class : "card-body"},[template3,template4,template5]);
+	var template7 = template_Html.div({ _class : "card"},[template2,template6]);
+	var template8 = template_Html.div({ _class : "col-sm-12 col-md-6 col-lg-4", "v-for" : "item in $" + "root.sheet.posts"},[template7]);
+	var template9 = template_Html.div({ _class : "row"},[template8]);
+	var template10 = template_TVue.vue([template_Html.div({ id : "home"},[template1,template9])]);
+	return template10.toString();
 };
 var VComponent = function() {
 };
@@ -441,6 +450,9 @@ template_Html.p = function(att,elements) {
 template_Html.h1 = function(att,elements) {
 	return new template_El("h1",att,elements);
 };
+template_Html.h5 = function(att,elements) {
+	return new template_El("h5",att,elements);
+};
 var template_El = function(name,att,elements) {
 	this.elements = [];
 	this.emptyElementArray = ["area","base","br","col","embed","hr","img","input","link","meta","param","source","track","wbr"];
@@ -552,6 +564,9 @@ template_TVue.vue = function(elements) {
 	template_El.reset();
 	return new template_El("",{ },elements);
 };
+template_TVue.routerLink = function(att,elements) {
+	return new template_El("router-link",att,elements);
+};
 template_TVue.__super__ = template_Html;
 template_TVue.prototype = $extend(template_Html.prototype,{
 	__class__: template_TVue
@@ -572,7 +587,7 @@ Bool.__ename__ = ["Bool"];
 var Class = { __name__ : ["Class"]};
 var Enum = { };
 js_Boot.__toStr = ({ }).toString;
-model_constants_App.BUILD = "2018-02-17 00:04:08";
+model_constants_App.BUILD = "2018-02-17 11:07:34";
 model_constants_App.PROJECT_NAME = "[SkeletorSheet2]";
 template_El._html = "";
 Main.main();

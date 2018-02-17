@@ -1,8 +1,8 @@
 {
 	"license": "MIT",
-	"name": "skeletor-sheet",
+	"name": "skeletor-sheet-2",
 	"version": "0.0.1",
-	"description": "Quick site with google-sheet (Skeletor-Sheet)",
+	"description": "Quick site with google-sheet (Skeletor-Sheet-2)",
 	"private": true,
 	"author": "Matthijs Kamstra aka [mck]",
 	"scripts": {
