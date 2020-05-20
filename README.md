@@ -8,7 +8,6 @@ It seems a good idea to make a skeleton project for this.
 
 SPA using vue and vue-router.
 
-
 ## Desciption project
 
 this is a bootstrap project for a quick website with a Google Spreadsheet "database"
@@ -80,14 +79,11 @@ build and create `docs` folder for github
 npm run build
 ```
 
-
 open local server (neko)
 
 ```bash
 npm run server:haxe
 ```
-
-
 
 ## Files
 
@@ -106,10 +102,4 @@ To make it work with vscode you need build files without:
 - c
 - v
 
-
-
 ## sources
-
-
-
-

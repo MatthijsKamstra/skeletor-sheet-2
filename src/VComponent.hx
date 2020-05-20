@@ -7,33 +7,33 @@ import template.TVue.*;
 import template.Out;
 
 class VComponent {
-	public function new () {
+	public function new() {}
 
-	}
-
-	function data () : Dynamic {
+	function data():Dynamic {
 		return {};
 	}
-	function props () : Array<String> {
+
+	function props():Array<String> {
 		return [];
 	}
-	function propsData () : Dynamic {
+
+	function propsData():Dynamic {
 		return {};
 	}
-	function computed () : Dynamic {
+
+	function computed():Dynamic {
 		return {};
 	}
-	function methods () : Dynamic {
+
+	function methods():Dynamic {
 		return {};
 	}
-	function template () : String {
+
+	function template():String {
 		return '';
 	}
-	function watch () : Dynamic {
+
+	function watch():Dynamic {
 		return {};
 	}
-
-
-
-
 }

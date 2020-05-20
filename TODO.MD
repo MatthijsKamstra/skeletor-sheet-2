@@ -20,7 +20,6 @@ build smarter `npm run ...` scripts
 - <http://fuzzytolerance.info/blog/2016/10/28/From-Gulp-to-NPM-Scripts/>
 - <http://lucasmreis.github.io/blog/npm-is-an-amazing-build-tool/>
 
-
 ### paralel commands
 
 - <https://www.npmjs.com/package/npm-run-all>
@@ -38,8 +37,6 @@ npm-run-all clean build:*
 ```bash
 npm install npm-run-all --save-dev
 ```
-
-
 
 - <https://github.com/Qard/onchange>
 
@@ -70,12 +67,9 @@ vue.js and tabletop.js
 
 - <https://codepen.io/mjweaver01/pen/dXqBKL>
 
-
 ## documents
 
 For this example used document. First url is the 'web-publish' version that doesn't work. The second is the 'shared' document url, that works
 
 - <https://docs.google.com/spreadsheets/d/e/2PACX-1vSRy1BrMibt-UinGRUxSniWqN6ntQOC3nzM22xrGT91M-u6wf8RmiRXJvO8e3zDdvy-PsN6LUxvY3J_/pubhtml>
 - <https://docs.google.com/spreadsheets/d/1KhcMZv01CfiAvCPhL8nVTXEJ2oRcLgSlj5UNX40jTsM/edit?usp=sharing>;
-
-

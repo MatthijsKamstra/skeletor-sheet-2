@@ -7,39 +7,38 @@ import template.TVue.*;
 import template.Out;
 
 class Template {
-
 	static public function createVue() {
 		var html = vue([
-			div({id:'app'},[
-				p({text:'{{ message }}'}),
+			div({id: 'app'}, [
+				p({text: '{{ message }}'}),
 				transition({
-					'name':"custom-classes-transition",
-					'enter-active-class':"animated fadeIn",
-					'leave-active-class':"animated fadeOut",
+					'name': "custom-classes-transition",
+					'enter-active-class': "animated fadeIn",
+					'leave-active-class': "animated fadeOut",
 				}, [
-					div({'id':"loadervue",'v-if':"showloading",},[
-						el('i',{'class':"fas fa-sync-alt fa-spin fa-3x"}),
-						span({'class':"sr-only", text:'Loading...'}),
+					div({'id': "loadervue", 'v-if': "showloading",}, [
+						el('i', {'class': "fas fa-sync-alt fa-spin fa-3x"}),
+						span({'class': "sr-only", text: 'Loading...'}),
 					]),
 				]),
-				div({_class:"row"},[
-					div({_class:"col-sm-12 col-md-6 col-lg-4", 'v-for':"item in sheet.posts"},[
-						div({_class:"card"},[
-							img({'v-bind:src':"item.img", _class:"card-img-top"}),
-							div({_class:"card-body"}, [
-								h5({_class:"card-title", text:'{{ item.title }}'}),
-					  			p({_class:"card-text", text:'{{ item.body }}'}),
-								a({href:"#",_class:"btn btn-primary", text:'read more'}),
+				div({_class: "row"}, [
+					div({_class: "col-sm-12 col-md-6 col-lg-4", 'v-for': "item in sheet.posts"}, [
+						div({_class: "card"}, [
+							img({'v-bind:src': "item.img", _class: "card-img-top"}),
+							div({_class: "card-body"}, [
+								h5({_class: "card-title", text: '{{ item.title }}'}),
+								p({_class: "card-text", text: '{{ item.body }}'}),
+								a({href: "#", _class: "btn btn-primary", text: 'read more'}),
 							])
 						])
 					])
 				])
 			])
 		]);
-		return(html.toString());
+		return (html.toString());
 	}
 
-	static public function getRoot():String{
+	static public function getRoot():String {
 		var template = '
 		<div id="app">
 			<h1>Hello App!</h1>
@@ -57,7 +56,6 @@ class Template {
 		';
 		return template;
 	}
-
 
 	static public function getOldRoot():String {
 		var template = '
@@ -98,10 +96,11 @@ class Template {
 			</div>
 		</div><!-- /#app -->
 		';
+
 		return template;
 	}
 
-	static public function getNav():String{
+	static public function getNav():String {
 		var template = '
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container">
@@ -128,21 +127,21 @@ class Template {
 		return template;
 	}
 
-	static public function getHome():String{
+	static public function getHome():String {
 		var template = vue([
-			div({id:'home'},[
-				h1({text:'Home'}),
-				div({_class:'row'},[
+			div({id: 'home'}, [
+				h1({text: 'Home'}),
+				div({_class: 'row'}, [
 					div({
-						_class:"col-sm-12 col-md-6 col-lg-4",
-						'v-for':'item in $$root.sheet.posts'
-					},[
-						div({_class:'card'},[
-							img({'v-bind:src':'item.img', _class:"npm"}),
-							div({_class:"card-body"},[
-								h5({_class:"card-title", text: '{{ item.title }}'}),
-								p({_class:"card-text", text:'{{ item.body }}'}),
-								routerLink({_class:"btn btn-dark", 'v-bind:to':'\'/post/\'+item.title', text:'Read more'}),
+						_class: "col-sm-12 col-md-6 col-lg-4",
+						'v-for': 'item in $$root.sheet.posts'
+					}, [
+						div({_class: 'card'}, [
+							img({'v-bind:src': 'item.img', _class: "npm"}),
+							div({_class: "card-body"}, [
+								h5({_class: "card-title", text: '{{ item.title }}'}),
+								p({_class: "card-text", text: '{{ item.body }}'}),
+								routerLink({_class: "btn btn-dark", 'v-bind:to': '\'/post/\'+item.title', text: 'Read more'}),
 								// a({'v-bind:href':"\'/#/post/\'+item.title", _class:"btn btn-primary", text:"read more"})
 							])
 						])
@@ -153,8 +152,7 @@ class Template {
 		return template.toString();
 	}
 
-
-	static public function home():String{
+	static public function home():String {
 		var template = '
 			<div class="home">
 				<h1>Home</h1>
@@ -175,23 +173,20 @@ class Template {
 		return template;
 	}
 
-	public static function test () : String {
+	public static function test():String {
 		var tmp = vue([
-			div({_class:'test'},[
-				h1({text:'Heading test'}),
-				h2({text:'id: "{{ $$route.params.id }}"'})
-			])
+			div({_class: 'test'}, [h1({text: 'Heading test'}), h2({text: 'id: "{{ $$route.params.id }}"'})])
 		]);
 		return tmp.toString();
 	}
 
-	static public function pages():String{
+	static public function pages():String {
 		var tmp = vue([
-			div({_class:'pages'},[
-				h1({text:'Heading Pages'}),
-				h2({text:'id: "{{ $$route.params.id }}"'}),
-				p({text:'path: "{{ $$route.path }}"'}),
-				p({text:'app: "{{ $$root.data }}"'}),
+			div({_class: 'pages'}, [
+				h1({text: 'Heading Pages'}),
+				h2({text: 'id: "{{ $$route.params.id }}"'}),
+				p({text: 'path: "{{ $$route.path }}"'}),
+				p({text: 'app: "{{ $$root.data }}"'}),
 			])
 		]);
 
@@ -202,15 +197,14 @@ class Template {
 		</div>
 
 		';
+
 		return tmp.toString();
 	}
 
-	static public function posts():String{
+	static public function posts():String {
 		var template = '
 			<div><h1>Posts</h1></div>
 		';
 		return template;
 	}
-
-
 }
